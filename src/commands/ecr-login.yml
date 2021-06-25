@@ -39,15 +39,23 @@ parameters:
       the environment variable you will set to hold this
       value, i.e. AWS_SECRET_ACCESS_KEY.
 
+  aws-session-token:
+    type: env_var_name
+    default: AWS_SESSION_TOKEN
+    description: >
+      Session token for temporary credentials.
+
 steps:
   - aws-cli/setup:
       profile-name: <<parameters.profile-name>>
       aws-access-key-id: <<parameters.aws-access-key-id>>
       aws-secret-access-key: <<parameters.aws-secret-access-key>>
+      aws-session-token: <<parameters.aws-session-token>>
       aws-region: <<parameters.region>>
 
   - run:
       name: Log into Amazon ECR
       command: |
         # get-login-password returns a password that we pipe to the docker login command
+        aws configure set aws_session_token <<parameters.aws-session-token>> --profile <<parameters.profile-name>>
         aws ecr get-login-password --region $<<parameters.region>> --profile <<parameters.profile-name>> | docker login --username AWS --password-stdin $<<parameters.account-url>>

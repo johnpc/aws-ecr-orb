@@ -73,6 +73,12 @@ parameters:
       the environment variable you will set to hold this
       value, i.e. AWS_SECRET_ACCESS_KEY.
 
+  aws-session-token:
+    type: env_var_name
+    default: AWS_SESSION_TOKEN
+    description: >
+      Session token for tempoary aws credentials
+
   region:
     type: env_var_name
     default: AWS_REGION
@@ -180,6 +186,7 @@ steps:
       account-url: <<parameters.account-url>>
       aws-access-key-id: <<parameters.aws-access-key-id>>
       aws-secret-access-key: <<parameters.aws-secret-access-key>>
+      aws-session-token: <<parameters.aws-session-token>>
 
   - when:
       condition: <<parameters.create-repo>>
@@ -207,6 +214,7 @@ steps:
       region: <<parameters.region>>
       aws-access-key-id: <<parameters.aws-access-key-id>>
       aws-secret-access-key: <<parameters.aws-secret-access-key>>
+      aws-session-token: <<parameters.aws-session-token>>
 
   - push-image:
       account-url: <<parameters.account-url>>

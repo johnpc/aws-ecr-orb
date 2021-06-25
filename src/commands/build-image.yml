@@ -87,6 +87,12 @@ parameters:
       the environment variable you will set to hold this
       value, i.e. AWS_SECRET_ACCESS_KEY.
 
+  aws-session-token:
+    type: env_var_name
+    default: AWS_SESSION_TOKEN
+    description: >
+      Session token for temporary aws credentials
+
 steps:
   - when:
       condition: <<parameters.checkout>>
@@ -105,6 +111,7 @@ steps:
             account-url: <<parameters.account-url>>
             aws-access-key-id: <<parameters.aws-access-key-id>>
             aws-secret-access-key: <<parameters.aws-secret-access-key>>
+            aws-session-token: <<parameters.aws-session-token>>
 
   - run:
       name: Build docker image

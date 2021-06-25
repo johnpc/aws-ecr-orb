@@ -46,6 +46,9 @@ workflows:
           # name of env var storing your AWS Access Key ID, defaults to AWS_ACCESS_KEY_ID
           aws-access-key-id: ACCESS_KEY_ID_ENV_VAR_NAME
 
+          # name of env var storing your AWS session token for temporary credentials, defaults to AWS_SESSION_TOKEN
+          aws-session-token: SESSION_TOKEN_ENV_VAR_NAME
+
           # name of env var storing your AWS Secret Access Key, defaults to AWS_SECRET_ACCESS_KEY
           aws-secret-access-key: SECRET_ACCESS_KEY_ENV_VAR_NAME
 

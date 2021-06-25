@@ -34,6 +34,12 @@ parameters:
       the environment variable you will set to hold this
       value, i.e. AWS_SECRET_ACCESS_KEY.
 
+  aws-session-token:
+    type: env_var_name
+    default: AWS_SESSION_TOKEN
+    description: >
+      Session token for temporary aws credentials
+
   region:
     type: env_var_name
     default: AWS_REGION
@@ -163,6 +169,7 @@ steps:
       dockerhub-password: <<parameters.dockerhub-password>>
       aws-access-key-id: <<parameters.aws-access-key-id>>
       aws-secret-access-key: <<parameters.aws-secret-access-key>>
+      aws-session-token: <<parameters.aws-session-token>>
       region: <<parameters.region>>
       account-url: <<parameters.account-url>>
       repo: <<parameters.repo>>
